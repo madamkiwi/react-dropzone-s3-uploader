@@ -11,6 +11,7 @@ export default class DropzoneS3Uploader extends React.Component {
     notDropzoneProps: PropTypes.array.isRequired,
     isImage: PropTypes.func.isRequired,
     passChildrenProps: PropTypes.bool,
+    contentDisposition: PropTypes.string,
     aclPermissions: PropTypes.string,
 
     imageComponent: PropTypes.func,
@@ -90,7 +91,7 @@ export default class DropzoneS3Uploader extends React.Component {
       uploaderOptions: Object.assign({
         signingUrl: '/s3/sign',
         s3path: '',
-        contentDisposition: 'auto',
+        contentDisposition: props.contentDisposition,
         uploadRequestHeaders: {'x-amz-acl': props.aclPermissions },
         onFinishS3Put: this.handleFinish,
         onProgress: this.handleProgress,
